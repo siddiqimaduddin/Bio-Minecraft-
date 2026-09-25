@@ -1,0 +1,448 @@
+/* ================= RESET DASAR ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'VT323', monospace;
+}
+
+body {
+    background-color: #111;
+    background-image: radial-gradient(#2a2a2a 15%, transparent 16%);
+    background-size: 14px 14px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px 12px;
+}
+
+/* ================= WRAPPER / KONTAINER UTAMA ================= */
+.hud-bar, 
+.main-container, 
+.quest-box, 
+.hotbar-container {
+    width: 100%;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ================= HUD BAR ATAS ================= */
+.hud-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+    border: 3px solid #555;
+    outline: 3px solid #000;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.xp-bar {
+    flex-grow: 1;
+    height: 12px;
+    background: #333;
+    margin: 0 10px;
+    border: 1px solid #555;
+}
+
+.xp-fill {
+    width: 75%;
+    height: 100%;
+    background: #55FF55;
+}
+
+.level {
+    color: #55FF55;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 11px;
+}
+
+/* ================= KARTU PROFIL UTAMA ================= */
+.main-container {
+    background: rgba(35, 35, 35, 0.95);
+    border: 4px solid #000;
+    outline: 4px solid #666;
+    padding: 20px 16px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+}
+
+.avatar-wrapper {
+    margin-bottom: 12px;
+}
+
+.avatar-img {
+    width: 110px;
+    height: 110px;
+    border: 3px solid #fff;
+    outline: 3px solid #000;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.username {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    color: #FFFF55;
+    text-shadow: 2px 2px #333;
+    margin-bottom: 4px;
+}
+
+.tagline {
+    font-size: 18px;
+    color: #aaa;
+    margin-bottom: 18px;
+}
+
+/* ================= GRID TOMBOL MENU ================= */
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.mc-btn {
+    background: #707070;
+    color: #fff;
+    padding: 14px 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    text-decoration: none;
+    border-top: 3px solid #aaa;
+    border-left: 3px solid #aaa;
+    border-right: 3px solid #333;
+    border-bottom: 3px solid #333;
+    outline: 2px solid #000;
+    cursor: pointer;
+    text-shadow: 1px 1px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mc-btn:active {
+    border-top: 3px solid #333;
+    border-left: 3px solid #333;
+    border-right: 3px solid #aaa;
+    border-bottom: 3px solid #aaa;
+    background: #555;
+}
+
+.btn-gold {
+    background: #AA0000;
+    color: #FFFF55;
+    border-top-color: #FF5555;
+    border-left-color: #FF5555;
+}
+
+/* ================= QUEST LOG / STATUS ================= */
+.quest-box {
+    background: #222;
+    border: 3px solid #555;
+    outline: 3px solid #000;
+    margin-top: 15px;
+    padding: 12px 14px;
+    text-align: left;
+}
+
+.quest-title, .section-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 11px;
+    color: #FFAA00;
+    margin-bottom: 6px;
+}
+
+.quest-text {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.3;
+}
+
+/* ================= MINECRAFT HOTBAR ================= */
+.hotbar-container {
+    display: flex;
+    justify-content: space-between;
+    background: #8b8b8b;
+    padding: 6px;
+    border: 4px solid #373737;
+    margin-top: 15px;
+    box-shadow: inset -2px -2px #555, inset 2px 2px #fff;
+}
+
+.hotbar-slot {
+    flex: 1;
+    max-width: 45px;
+    height: 45px;
+    background: #8b8b8b;
+    border: 3px solid #373737;
+    box-shadow: inset -2px -2px #fff, inset 2px 2px #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hotbar-slot:hover, .hotbar-slot.active {
+    border-color: #fff;
+    background: #a0a0a0;
+}
+
+/* ================= JENDELA POPUP (MODAL) ================= */
+.mc-window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 420px;
+    background: #C6C6C6;
+    border: 4px solid #000;
+    box-shadow: inset -4px -4px #555555, inset 4px 4px #ffffff;
+    z-index: 100;
+    padding: 6px;
+    color: #000;
+}
+
+.window-header {
+    background: #000080;
+    color: #fff;
+    padding: 8px 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    background: #AA0000;
+    color: #fff;
+    border: 1px solid #fff;
+    font-weight: bold;
+    padding: 2px 8px;
+    cursor: pointer;
+}
+
+.window-body {
+    padding: 15px 12px;
+}
+
+.window-text {
+    font-size: 18px;
+    line-height: 1.3;
+    color: #111;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
+    z-index: 90;
+}
+
+/* ================= FITUR BARU 1: COPY IP & PORT CARD ================= */
+.ip-card {
+    background: #111;
+    border: 2px solid #555;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ip-info {
+    text-align: left;
+}
+
+.ip-label {
+    display: block;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.ip-val {
+    font-size: 18px;
+    color: #55FF55;
+    font-weight: bold;
+}
+
+/* ================= FITUR BARU 2: DAFTAR 11 RANK ================= */
+.rank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.rank-card {
+    background: #222;
+    border: 2px solid #444;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.gold-border {
+    border: 2px solid #FFFF55;
+    background: #332b00;
+}
+
+.rank-badge {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border: 1px solid #fff;
+}
+
+.rank-details h4 {
+    font-size: 15px;
+    color: #55FF55;
+}
+
+.rank-details p {
+    font-size: 13px;
+    color: #ccc;
+    margin-top: 2px;
+}
+
+.price {
+    color: #FFAA00;
+}
+
+/* ================= FITUR BARU 3: STORAGE & PRODUK AFFILIATE ================= */
+.project-box {
+    background: #222;
+    border: 2px solid #444;
+    padding: 10px;
+    margin-top: 8px;
+    text-align: left;
+    color: #fff;
+}
+
+.affiliate-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.product-card {
+    background: #1a1a1a;
+    border: 2px solid #555;
+    padding: 12px;
+    text-align: left;
+    position: relative;
+}
+
+.badge {
+    background: #AA0000;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    font-family: 'Press Start 2P', cursive;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+.product-card h4 {
+    font-size: 17px;
+    color: #FFFF55;
+    margin-bottom: 4px;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+/* ================= FITUR BARU 4: MENU PEMBELIAN & QRIS ================= */
+.purchase-menu {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 2px dashed #555;
+}
+
+.purchase-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.purchase-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+}
+
+.purchase-btn span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.purchase-btn small {
+    font-size: 11px;
+    color: #ddd;
+    margin-top: 4px;
+    font-family: 'VT323', monospace;
+}
+
+.qris-box {
+    background: #111;
+    border: 2px solid #555;
+    padding: 12px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.qris-img {
+    width: 180px;
+    height: 180px;
+    border: 3px solid #fff;
+    margin: 5px 0;
+    object-fit: contain;
+}
+
+/* ================= MEDIA QUERY (DESKTOP) ================= */
+@media (min-width: 768px) {
+    .hud-bar, 
+    .main-container, 
+    .quest-box, 
+    .hotbar-container {
+        max-width: 550px;
+    }
+
+    .username {
+        font-size: 20px;
+    }
+
+    .mc-btn {
+        font-size: 11px;
+        padding: 16px 12px;
+    }
+
+    .hotbar-slot {
+        max-width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+}

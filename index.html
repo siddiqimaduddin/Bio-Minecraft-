@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Bio Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. HUD BAR ATAS -->
+    <div class="hud-bar">
+        <div class="hearts">❤️❤️❤️❤️❤️</div>
+        <div class="xp-bar"><div class="xp-fill"></div></div>
+        <div class="level">LVL 99</div>
+    </div>
+
+    <!-- 2. KONTAINER UTAMA (PROFIL & MENU) -->
+    <div class="main-container">
+        <div class="avatar-wrapper">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdW9uaGpzbmM5ZXJ1ZXltNnlreWhpYzhxeDV2dDVqbm0yeTN3ODFneSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lq0h93752f6J9tijrh/giphy.gif" alt="Avatar" class="avatar-img">
+        </div>
+        <h1 class="username">NAMA KAMU</h1>
+        <p class="tagline">✨ Mobile Creator & Gamer ✨</p>
+
+        <!-- Grid Menu Utama (4 Tombol) -->
+        <div class="menu-grid">
+            <button class="mc-btn" onclick="openWindow('win-about')">📖 PROFIL</button>
+            <button class="mc-btn" onclick="openWindow('win-socials')">🌐 MEDSOS</button>
+            <button class="mc-btn" onclick="openWindow('win-status')">⚔️ SERVER IP</button>
+            <button class="mc-btn btn-gold" onclick="openWindow('win-ranks')">👑 RANK STORE</button>
+        </div>
+    </div>
+
+    <!-- 3. CURRENT QUEST -->
+    <div class="quest-box">
+        <div class="quest-title">📜 CURRENT QUEST</div>
+        <div class="quest-text">⚡ Sedang menyiapkan konten Minecraft terbaru! Stay tuned.</div>
+    </div>
+
+    <!-- 4. HOTBAR 7 SLOT -->
+    <div class="hotbar-container">
+        <a href="https://discord.gg/kode_invitation" target="_blank" class="hotbar-slot" title="Discord">💬</a>
+        <a href="https://open.spotify.com" target="_blank" class="hotbar-slot" title="Spotify">🎵</a>
+        <div class="hotbar-slot" onclick="openWindow('win-email')" title="Email">✉️</div>
+        <a href="javascript:void(0)" onclick="openWindow('win-status')" class="hotbar-slot active" title="Server IP">⚔️</a>
+        <a href="javascript:void(0)" onclick="openWindow('win-storage')" class="hotbar-slot" title="Gear & Setup">🍎</a>
+        <a href="https://saweria.co/username_kamu" target="_blank" class="hotbar-slot" title="Donasi">💎</a>
+        <a href="javascript:void(0)" onclick="openWindow('win-storage')" class="hotbar-slot" title="Texture Pack">📦</a>
+    </div>
+
+
+    <!-- ================= JENDELA MODAL (POPUP) ================= -->
+
+    <!-- Jendela 1: Profil -->
+    <div id="win-about" class="mc-window">
+        <div class="window-header">
+            <span>[ JENDELA PROFIL ]</span>
+            <button class="close-btn" onclick="closeWindow('win-about')">X</button>
+        </div>
+        <div class="window-body">
+            <p class="section-title">⚡ Siapa Saya?</p>
+            <p class="window-text">Saya adalah seorang kreator konten gaming & eksperimen digital dari smartphone!</p>
+            <div class="tags" style="margin-top:10px;">
+                <span class="tag">Minecraft</span>
+                <span class="tag">Content Creator</span>
+                <span class="tag">Mobile Coding</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jendela 2: Medsos -->
+    <div id="win-socials" class="mc-window">
+        <div class="window-header">
+            <span>[ MEDSOS & LINK ]</span>
+            <button class="close-btn" onclick="closeWindow('win-socials')">X</button>
+        </div>
+        <div class="window-body">
+            <p class="window-text">Pilih platform untuk berkunjung:</p>
+            <div class="link-card">
+                <a href="https://tiktok.com/@username_kamu" target="_blank" class="mc-btn link-btn">🎵 TIKTOK</a>
+            </div>
+            <div class="link-card">
+                <a href="https://instagram.com/username_kamu" target="_blank" class="mc-btn link-btn">📸 INSTAGRAM</a>
+            </div>
+            <div class="link-card">
+                <a href="https://youtube.com/@username_kamu" target="_blank" class="mc-btn link-btn">▶️ YOUTUBE</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jendela 3: Server IP & Status -->
+    <div id="win-status" class="mc-window">
+        <div class="window-header">
+            <span>[ SERVER IP & STATUS ]</span>
+            <button class="close-btn" onclick="closeWindow('win-status')">X</button>
+        </div>
+        <div class="window-body">
+            <p class="section-title"id="server-status">🟢 STATUS SERVER: ONLINE</p>
+            <div class="ip-card">
+                <div class="ip-info">
+                    <span class="ip-label">🌐 IP Server:</span>
+                    <span class="ip-val">play.serverkamu.net</span>
+                </div>
+                <button class="mc-btn" onclick="copyText('play.serverkamu.net', this)">SALIN IP</button>
+            </div>
+            <div class="ip-card">
+                <div class="ip-info">
+                    <span class="ip-label">🔌 Port (Bedrock/HP):</span>
+                    <span class="ip-val">19132</span>
+                </div>
+                <button class="mc-btn" onclick="copyText('19132', this)">SALIN PORT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jendela 4: Rank Store (11 Ranks) -->
+    <div id="win-ranks" class="mc-window">
+        <div class="window-header">
+            <span>[ RANK STORE - 11 RANKS ]</span>
+            <button class="close-btn" onclick="closeWindow('win-ranks')">X</button>
+        </div>
+        <div class="window-body" style="max-height: 70vh; overflow-y: auto;">
+            <p class="section-title" style="color:#FFAA00;">💳 CARA PEMBELIAN RANK:</p>
+            <p class="window-text" style="font-size:14px; margin-bottom: 10px;">
+                Sistem pembayaran dapat menggunakan **QRIS (All Payment)** atau **Saweria**. Kirim bukti transfer ke **Discord/WA** untuk klaim rank!
+            </p>
+
+            <div class="rank-list">
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>1. COAL MEMBER - <span class="price">Rp 0</span></h4>
+                        <p>• Prefix [Coal], Claim Land 2 Chunk, Kit Starter.</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>2. IRON WARRIOR - <span class="price">Rp 10.000</span></h4>
+                        <p>• Fitur /fly di Lobby, Sethome 5, Kit Iron Bulanan.</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>3. GOLD KNIGHT - <span class="price">Rp 25.000</span></h4>
+                        <p>• Sethome 10, Akses Command /hat, Kit Gold.</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>4. REDSTONE ENGINEER - <span class="price">Rp 40.000</span></h4>
+                        <p>• Redstone Clock Limit +2, Title Custom Nama.</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>5. LAPIS MYSTIC - <span class="price">Rp 55.000</span></h4>
+                        <p>• XP Boost 1.5x, Fitur /craft & /anvil virtual.</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>6. DIAMOND HERO - <span class="price">Rp 75.000</span></h4>
+                        <p>• Fitur /fly di Survival, Sethome 20, Vault Chest +3.</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>7. EMERALD CHAMPION - <span class="price">Rp 100.000</span></h4>
+                        <p>• Chat Hijau Neon, Diskon Shop Server 15%.</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>8. NETHERITE LORD - <span class="price">Rp 150.000</span></h4>
+                        <p>• Keep Inventory Personal (Anti-Loss Item).</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>9. WARDEN BOSS - <span class="price">Rp 225.000</span></h4>
+                        <p>• Pet Custom Warden, Particle Effect Unik.</p>
+                    </div>
+                </div>
+                <div class="rank-card">
+                    <div class="rank-details">
+                        <h4>10. ENDER KING - <span class="price">Rp 350.000</span></h4>
+                        <p>• Komando /heal (Cooldown 1 Jam), Diskon Shop 30%.</p>
+                    </div>
+                </div>
+                <div class="rank-card gold-border">
+                    <div class="rank-details">
+                        <h4 style="color:#FFFF55;">11. DRAGON LEGEND - <span class="price">Rp 500.000</span></h4>
+                        <p>• Semua Benefit + Wings Cosmetic + Priority Admin!</p>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- ================= MENU PEMBELIAN RANK ================= -->
+            <div class="purchase-menu">
+                <p class="section-title" style="color:#FFFF55; margin-top:20px; text-align:center;">
+                    🛒 PILIH METODE PEMBAYARAN & KONFIRMASI:
+                </p>
+
+                <div class="purchase-grid">
+                    <!-- Opsi 1: Saweria / QRIS -->
+                    <a href="https://saweria.co/username_kamu" target="_blank" class="mc-btn btn-gold purchase-btn">
+                        <span>💎 SAWERIA / QRIS</span>
+                        <small>Bayar otomatis via GoPay, DANA, ShopeePay, Bank</small>
+                    </a>
+
+                    <!-- Opsi 2: WhatsApp Admin -->
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20beli%20Rank%20Minecraft!" target="_blank" class="mc-btn purchase-btn" style="border-color:#55FF55;">
+                        <span>💬 WHATSAPP ADMIN</span>
+                        <small>Transfer Bank / E-Wallet & Klaim Manual</small>
+                    </a>
+
+                    <!-- Opsi 3: Discord Ticket -->
+                    <a href="https://discord.gg/kode_invitation" target="_blank" class="mc-btn purchase-btn" style="border-color:#5555FF;">
+                        <span>🎮 DISCORD TICKET</span>
+                        <small>Buka Tiket Pembelian & Konfirmasi Bukti</small>
+                    </a>
+                </div>
+
+                <!-- Box Tampilan Gambar QRIS Langsung (Opsional) -->
+                <div class="qris-box">
+                    <p style="color:#FFAA00; font-size:12px; margin-bottom:5px;">📷 SCAN QRIS UTAMA SERVER:</p>
+                    <img src="https://via.placeholder.com/200x200.png?text=QRIS+SERVER" alt="QRIS Server" class="qris-img">
+                    <p style="font-size:11px; color:#aaa; margin-top:5px;">
+                        Setelah transfer ke QRIS di atas, jangan lupa kirim bukti resi ke WA / Discord Admin!
+                    </p>
+                </div>
+            </div>
+
+              
+        </div>
+    </div>
+
+    <!-- Jendela 5: Storage & Gear Affiliate -->
+    <div id="win-storage" class="mc-window">
+        <div class="window-header">
+            <span>[ STORAGE & SETUP GEAR ]</span>
+            <button class="close-btn" onclick="closeWindow('win-storage')">X</button>
+        </div>
+        <div class="window-body" style="max-height: 70vh; overflow-y: auto;">
+            <p class="section-title">📦 RESOURCE & TEXTURE PACK</p>
+            <div class="project-box">
+                <p><strong>Minecraft PvP & Survival Ultra HD Pack</strong></p>
+                <a href="https://drive.google.com" target="_blank" class="mc-btn" style="width:100%; margin-top:5px;">⬇️ DOWNLOAD PACK (ZIP)</a>
+            </div>
+
+            <hr style="margin: 15px 0; border: 1px solid #555;">
+
+            <p class="section-title" style="color:#55FF55;">🔥 GEAR GAMING REKOMENDASI</p>
+            <div class="affiliate-grid">
+                <div class="product-card">
+                    <span class="badge">FAST-BRIDGING</span>
+                    <h4>⌨️ Mechanical Keyboard RGB</h4>
+                    <p>Smooth, responsif buat PVP Minecraft & koding.</p>
+                    <a href="https://shope.ee/LINK_AFFILIATE_1" target="_blank" class="mc-btn btn-gold">🛒 CEK HARGA PROMO</a>
+                </div>
+                <div class="product-card">
+                    <span class="badge">ZERO LATENCY</span>
+                    <h4>🖱️ Ultra-Light Gaming Mouse</h4>
+                    <p>DPI Tinggi! Butterfly click & drag click lancar.</p>
+                    <a href="https://shope.ee/LINK_AFFILIATE_2" target="_blank" class="mc-btn btn-gold">🛒 CEK HARGA PROMO</a>
+                </div>
+                <div class="product-card">
+                    <span class="badge">NO LAG 120 FPS</span>
+                    <h4>📱 Smartphone Gaming Anti-Heat</h4>
+                    <p>Lancar main Minecraft Bedrock & koding di Acode.</p>
+                    <a href="https://shope.ee/LINK_AFFILIATE_3" target="_blank" class="mc-btn btn-gold">🛒 CEK HARGA PROMO</a>
+                </div>
+                <div class="product-card">
+                    <span class="badge">SHADERS ULTRA</span>
+                    <h4>💻 Mini PC / Rig Gaming Setup</h4>
+                    <p>Spesifikasi handal untuk render video & Shaders Minecraft!</p>
+                    <a href="https://shope.ee/LINK_AFFILIATE_4" target="_blank" class="mc-btn btn-gold">🛒 CEK HARGA PROMO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jendela 6: Email Kontak -->
+    <div id="win-email" class="mc-window">
+        <div class="window-header">
+            <span>[ KONTAK EMAIL ]</span>
+            <button class="close-btn" onclick="closeWindow('win-email')">X</button>
+        </div>
+        <div class="window-body">
+            <p class="section-title">📧 Kirim Pesan / Kerjasama:</p>
+            <div class="link-card" style="margin-top: 10px;">
+                <input type="text" value="emailanda@gmail.com" readonly style="width: 100%; padding: 8px; font-family: 'VT323'; font-size: 18px; background: #222; color: #55FF55; border: 2px solid #000; text-align: center;">
+            </div>
+            <a href="mailto:emailanda@gmail.com" class="mc-btn btn-gold" style="width: 100%; margin-top: 10px;">
+                ✉️ BUKA GMAIL
+            </a>
+        </div>
+    </div>
+
+    <!-- Overlay Latar Gelap -->
+    <div id="overlay" class="overlay" onclick="closeAllWindows()"></div>
+
+    <script src="script.js"></script>
+      <!-- Link Rahasia Khusus Admin -->
+    <div style="text-align: center; margin-top: 20px; padding-bottom: 20px;">
+        <a href="admin.html" style="color: #444; font-size: 11px; text-decoration: none;">⚙️</a>
+    </div>
+
+</body>
+</html>
